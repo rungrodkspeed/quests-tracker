@@ -50,7 +50,7 @@ where
         let original_password = adventurer.password;
         let login_password = login_model.password;
 
-        if argon2_hashing::verify(login_password, original_password)? {
+        if !argon2_hashing::verify(login_password, original_password)? {
             return Err(anyhow::anyhow!("Invalid password"));
         }
 
@@ -123,7 +123,7 @@ where
         let original_password = guild_commander.password;
         let login_password = login_model.password;
 
-        if argon2_hashing::verify(login_password, original_password)? {
+        if !argon2_hashing::verify(login_password, original_password)? {
             return Err(anyhow::anyhow!("Invalid password"));
         }
 
